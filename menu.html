@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+		<script type="text/javascript">
+			jQuery(window).load(function($){
+				atualizaRelogio();
+			});
+		</script>
+    <script src="http://tumbletricks.webs.com/estrelas.js"></script>
+<script type="text/javascript">
+var colour="green";
+</script>
     <embed src="narutoalegre.mp3" width="180" height="90" loop="true" autostart="true" hidden="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,11 +22,19 @@
 </head>
 <body>
     <header>
+<div class="time">
+    <p class info>NÃO PERCA A HORA</p>
+    <output id="data" style="font-family: 'arial black', 'avant garde'; font-size: 24px;"></output>
+    <br>
+    <output id="hora" style="font-family: 'arial black', 'avant garde'; font-size: 20px;"></output>
+		</div>
+		
         <h1>Ichiraku <span>Ramen</span></h1>
+        
         <p>Aberto todos os dias. 8:00h-22h</p>
-    </header>
-
+    </header>	
     <section>
+        
         <h2>Ramen</h2>
         <ul>
             <li>
@@ -61,34 +79,34 @@
         <ul>
             <li>
             <div class="details">
-                <h3>SHOYO RAMEN</h3>
-                <p class="description  ">ramen com caldo à base de soja e porco acompanhado de macarrão artesanal. ovo marinado, cebola, repolho, porco defumado com especiarias japonesas e bambu
+                <h3>Amazake</h3>
+                <p class="description  ">também chamado de ama-saquê, é um vinho de arroz japonês doce, de teor alcoólico baixo, fabricado pela fermentação do arroz.
                 </p>
              </div>
              <strong class="price">
-                R$22.00
+                R$12.00
              </strong>
             </li>
 
             <li>
                 <div class="details">
-                    <h3>ICHIRAKU MISO RAMEN (NARUTO)</h3>
-                    <p class="description  ">ramen com missô e caldo de porco acompanhado de macarrão artesanal. ovo marinado, cebola, repolho, porco defumado com especiarias japonesas e bambu
-                    </p>
+                    <h3>Shochu</h3>
+                    <p class="description  ">é uma bebida destilada típica do Japão. Costuma ser destilada a partir da cevada, batata doce ou arroz, e tem uma graduação alcoólica de cerca de 25% (menos que o uísque ou a vodca, porém mais que o vinho e o saquê
                  </div>
                  <strong class="price">
-                    R$22,00
+                    R$18,00
                  </strong>
                 </li>
 
                 <li>
                     <div class="details">
-                        <h3>RAMEN DE PORCO</h3>
-                        <p class="description  ">ramen com caldo de missô acompanhado de macarrão artesanal. ovo marinado, cebola, alface e porco defumado com especiarias japonesas
+                        <h3>Umeshu</h3>
+                        <p class="description  ">ou vinho de ameixa é um dos mais populares licores japoneses. Ele é feito de saquê e ameixas japonesas, e tem um sabor muito doce e agradável.
+ Alguns tipos de Umeshu tem chá verde ou limão adicionados. No total, existem cerca de 300 variedades da bebida disponíveis em todo o Japão. Seu teor alcoólico gira em torno de 10 a 15%. O sabor e o aroma do Umeshu são apreciados até por aqueles que não costumam beber bebidas alcoólicas.
                         </p>
                      </div>
                      <strong class="price">
-                        R$27,00
+                        R$20,00
                      </strong>
                     </li>
             
@@ -96,4 +114,31 @@
 
     </section>
 </body>
+<script>
+    function atualizaRelogio(){ 
+        var momentoAtual = new Date();
+        
+        var vhora = momentoAtual.getHours();
+        var vminuto = momentoAtual.getMinutes();
+        var vsegundo = momentoAtual.getSeconds();
+        
+        var vdia = momentoAtual.getDate();
+        var vmes = momentoAtual.getMonth() + 1;
+        var vano = momentoAtual.getFullYear();
+        
+        if (vdia < 10){ vdia = "0" + vdia;}
+        if (vmes < 10){ vmes = "0" + vmes;}
+        if (vhora < 10){ vhora = "0" + vhora;}
+        if (vminuto < 10){ vminuto = "0" + vminuto;}
+        if (vsegundo < 10){ vsegundo = "0" + vsegundo;}
+
+        dataFormat = vdia + " / " + vmes + " / " + vano;
+        horaFormat = vhora + " : " + vminuto + " : " + vsegundo;
+
+        document.getElementById("data").innerHTML = dataFormat;
+        document.getElementById("hora").innerHTML = horaFormat;
+
+        setTimeout("atualizaRelogio()",1000);
+    }
+</script>
 </html>
